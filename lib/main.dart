@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therafy_app/ui/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Therafy App',
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 212, 59, 59),
+          primary: Colors.orange,
+          secondary: Colors.white,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false, //quitar el debug de la esquina
+      home: const HomeScreen(),
     );
   }
 }
