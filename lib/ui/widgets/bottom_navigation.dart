@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:therafy_app/ui/screens/calendar_screen.dart';
 import 'package:therafy_app/ui/screens/home_screen.dart';
-
+import 'package:therafy_app/ui/screens/settings_screen.dart';
 
 class NavigationScreenBottom extends StatefulWidget {
   const NavigationScreenBottom({super.key});
@@ -15,7 +15,7 @@ class _NavigationScreenBottomState extends State<NavigationScreenBottom> {
   final List<Widget> pantallas = [
     const HomeScreen(),
     const CalendarScreen(), //pantalla calendario
-    const Center (child: Text("Pagina2")),
+    const SettingsScreen(),
   ];
 
   void onItemTapped(int index) {

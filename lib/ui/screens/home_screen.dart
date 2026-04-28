@@ -143,12 +143,19 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
 
-                    child: const SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: Center(
-                        child: Text("Pacientes")
-                      ),
+                    //buscar como poner la imagen encima con el texto
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/pacientes.jpg',
+                          width: 200,
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: 8),
+                        Text("Pacientes"),
+                        SizedBox(height: 8),
+                      ],
                     ),
                   ),
                 ),

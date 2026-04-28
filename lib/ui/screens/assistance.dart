@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AssistanceScreen extends StatefulWidget {
+class AssistanceScreen extends StatelessWidget {
   const AssistanceScreen({super.key});
 
-  @override
-  State<AssistanceScreen> createState() => _AssistanceScreenState();
-}
-
-class _AssistanceScreenState extends State<AssistanceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +33,6 @@ class _AssistanceScreenState extends State<AssistanceScreen> {
           ],
         ),
       ),
-    );
+    );;
   }
 }
