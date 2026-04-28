@@ -5,6 +5,12 @@ Actualmente el área de la salud se está "adaptando" a la digitalización de lo
 
 Therafy busca lograr que el proceso de terapias estén al alcance de la mano, teniendo mayor accesibildad y rapidez a la hora de gestionar todo el proceso.
 
+### Instrucciones de uso
+- Al abrir la aplicación, se muestra la pantalla de inicio por defecto.
+- Habrán cuatro tarjetas que permiten acceder a pantallas en detalle de algun detalle, como por ejemplo el perfil de usuario, los pacientes actuales, etc.
+- En la parte inferior habrá una barra de navegación para elegir entra la pantalla principal, el calendario en detalle y los ajustes de la aplicación.
+- En cuanto a las tarjetas, en Asistencia por ejemplo, hay un botón que marcará la asistencia del día de hoy.
+
 ### ¿Por qué es necesaria?
 - Falta de modernización digital en el área de la salud
 - Orden y gestión a la mano de las sesiones de cada usuario
