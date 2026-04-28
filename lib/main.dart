@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therafy_app/ui/screens/home_screen.dart';
+import 'package:therafy_app/ui/widgets/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false, //quitar el debug de la esquina
-      home: const HomeScreen(),
+      home: const NavigationScreenBottom(),
     );
   }
 }
