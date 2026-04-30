@@ -8,17 +8,31 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Inicio',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/logo2.png',
+              width: 70,
+              height: 70,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(width: 10),
+            Text(
+              'Inicio',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.white,
         toolbarHeight: 80, //tamaño de la barra
       ),
+
+      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
+
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -33,44 +47,46 @@ class HomeScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 30),
-            /*
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Card(
-                    child: SizedBox(
-                      width: 420,
-                      height: 150,
-                      child: const Center(
-                        child: Text("Lista de actividades")
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),*/
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(
-                  clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileScreen(),
-                        ),
-                      );
-                    },
-
-                    child: const SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: Center(
-                        child: Text("Perfil")
+                Expanded(
+                  child: Card(
+                    elevation: 6,
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(), //temporal
+                          ),
+                        );
+                      },
+                  
+                      //poner una foto cambiante de perfil, que ponga la del usuario personal y una por defecto
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/perfil.png',
+                            //width: 200,
+                            //height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              "Perfil",
+                              style: TextStyle(
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            )
+                          ),
+                          SizedBox(height: 10),
+                        ],
                       ),
                     ),
                   ),
@@ -78,23 +94,41 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(width: 10),
 
-                Card(
-                  clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AssistanceScreen(),
-                        ),
-                      );
-                    },
-
-                    child: const SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: Center(
-                        child: Text("Asistencia")
+                Expanded(
+                  child: Card(
+                    elevation: 6,
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AssistanceScreen(), //temporal
+                          ),
+                        );
+                      },
+                  
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/asistencia.jpg',
+                            //width: 200,
+                            //height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              "Asistencia",
+                              style: TextStyle(
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            )
+                          ),
+                          SizedBox(height: 10),
+                        ],
                       ),
                     ),
                   ),
@@ -107,23 +141,41 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(
-                  clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileScreen(), //temporal
-                        ),
-                      );
-                    },
-
-                    child: const SizedBox(
-                      width: 200,
-                      height: 150,
-                      child: Center(
-                        child: Text("Cápsulas de video")
+                Expanded(
+                  child: Card(
+                    elevation: 6,
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(), //temporal
+                          ),
+                        );
+                      },
+                  
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/capsulasvideo.png',
+                            //width: 200,
+                            //height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              "Cápsulas de video",
+                              style: TextStyle(
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            )
+                          ),
+                          SizedBox(height: 10),
+                        ],
                       ),
                     ),
                   ),
@@ -131,31 +183,42 @@ class HomeScreen extends StatelessWidget {
 
                 const SizedBox(width: 10),
 
-                Card(
-                  clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileScreen(), //temporal
-                        ),
-                      );
-                    },
-
-                    //buscar como poner la imagen encima con el texto
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/pacientes.jpg',
-                          width: 200,
-                          height: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(height: 8),
-                        Text("Pacientes"),
-                        SizedBox(height: 8),
-                      ],
+                Expanded(
+                  child: Card(
+                    elevation: 6,
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(), //temporal
+                          ),
+                        );
+                      },
+                  
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/pacientes.jpg',
+                            //width: 200,
+                            //height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              "Pacientes",
+                              style: TextStyle(
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            )
+                          ),
+                          SizedBox(height: 10),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -163,7 +226,6 @@ class HomeScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 30),
-
           ],
         ),
       ),
