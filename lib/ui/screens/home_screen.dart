@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:therafy_app/ui/screens/patient2_screen.dart';
+import 'package:therafy_app/ui/screens/patient_screen.dart';
 import 'package:therafy_app/ui/screens/profile_screen.dart';
 import 'package:therafy_app/ui/screens/assistance.dart';
 
@@ -192,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProfileScreen(), //temporal
+                            builder: (context) => const Patient2Screen(), //temporal
                           ),
                         );
                       },
