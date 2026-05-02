@@ -22,7 +22,29 @@ class Patient2Screen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: WidgetListView(), //tunearlo para ponerle más cosas además de la lista
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, //que no esté al medio xd
+          children: [
+            Text(
+              "Pacientes",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Pacientes activos",
+              style: TextStyle(color: Colors.grey),
+            ),
+            SizedBox(height: 16),
+
+            Expanded(
+              child: WidgetListView(),
+            ),
+
+          ],
+        ), //tunearlo para ponerle más cosas además de la lista
       ),
     );
   }
