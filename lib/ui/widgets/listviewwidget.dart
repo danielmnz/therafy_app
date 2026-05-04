@@ -25,9 +25,7 @@ class WidgetListView extends StatelessWidget {
           ),
         );
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(
-        color: Colors.black,
-      ),
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:therafy_app/ui/screens/patient2_screen.dart';
 import 'package:therafy_app/ui/screens/patient_screen.dart';
 import 'package:therafy_app/ui/screens/profile_screen.dart';
 import 'package:therafy_app/ui/screens/assistance.dart';
+import 'package:therafy_app/ui/screens/videos_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -152,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProfileScreen(), //temporal
+                            builder: (context) => const VideoScreen(), //temporal
                           ),
                         );
                       },
@@ -160,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Image.asset(
-                            'assets/images/capsulasvideo.png',
+                            'assets/images/capsulasvideo.png', //cambiar la imagen
                             //width: 200,
                             //height: 150,
                             fit: BoxFit.cover,
@@ -168,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(height: 10),
                           Center(
                             child: Text(
-                              "Cápsulas de video",
+                              "Contenidos Educativos",
                               style: TextStyle(
                                 //fontWeight: FontWeight.bold,
                                 fontSize: 15,

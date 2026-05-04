@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therafy_app/ui/screens/video1_screen.dart';
 import 'package:therafy_app/ui/widgets/listviewwidget.dart';
 
 class Patient2Screen extends StatelessWidget {
@@ -39,8 +40,92 @@ class Patient2Screen extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            Expanded(
-              child: WidgetListView(),
+            SizedBox(
+              width: double.infinity,
+              height: 80,
+              child: Card(
+                color: Colors.blue,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Video1Screen(), //temporal
+                        ),
+                      );
+                    },
+                    child: Center(
+                      child: Text(
+                        "Nombre paciente 1",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                ),
+              ),
+            ),
+
+            Divider(),
+
+            SizedBox(
+              width: double.infinity,
+              height: 80,
+              child: Card(
+                color: Colors.blue,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Video1Screen(), //temporal
+                        ),
+                      );
+                    },
+                    child: Center(
+                      child: Text(
+                        "Nombre paciente 2",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                ),
+              ),
+            ),
+
+            Divider(),
+
+            SizedBox(
+              width: double.infinity,
+              height: 80,
+              child: Card(
+                color: Colors.blue,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Video1Screen(), //temporal cambiar despues
+                        ),
+                      );
+                    },
+                    child: Center(
+                      child: Text(
+                        "Nombre paciente 3",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                ),
+              ),
             ),
 
           ],

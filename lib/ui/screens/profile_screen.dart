@@ -22,8 +22,81 @@ class ProfileScreen extends StatelessWidget {
         ),
         toolbarHeight: 80, //tamaño barra
       ),
-      body: const Center(
-        child: Text("Pantalla de perfil"),
+      body: Column(
+        children: [
+          SizedBox(height: 20),
+
+          //foto perfil
+          CircleAvatar(
+            radius: 60,
+            backgroundImage: AssetImage('assets/images/chicharito_profile.jpeg'),
+          ),
+          SizedBox(height: 2),
+          Text(
+            "Javier Hernández",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+            ),
+          ),
+          SizedBox(height: 2),
+          Text(
+            "chicharito@gmail.com",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+            ),
+          ),
+
+          SizedBox(height: 20),
+
+          // Opciones tipo perfil
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text(
+              "Editar perfil",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
+            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            onTap: () {},
+          ),
+
+          Divider(),
+
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              "Configuración",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
+            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            onTap: () {},
+          ),
+
+          Divider(),
+
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text(
+              "Cerrar sesión",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
+            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }
