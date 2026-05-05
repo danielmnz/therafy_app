@@ -22,81 +22,68 @@ class ProfileScreen extends StatelessWidget {
         ),
         toolbarHeight: 80, //tamaño barra
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-
-          //foto perfil
-          CircleAvatar(
-            radius: 60,
-            backgroundImage: AssetImage('assets/images/chicharito_profile.jpeg'),
-          ),
-          SizedBox(height: 2),
-          Text(
-            "Javier Hernández",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+        
+            //foto perfil
+            CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage('assets/images/chicharito_profile.jpeg'),
             ),
-          ),
-          SizedBox(height: 2),
-          Text(
-            "chicharito@gmail.com",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 15,
-            ),
-          ),
-
-          SizedBox(height: 20),
-
-          // Opciones tipo perfil
-          ListTile(
-            leading: Icon(Icons.person, color: Colors.white),
-            title: Text(
-              "Editar perfil",
+            SizedBox(height: 2),
+            Text(
+              "Javier Hernández",
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+                color: Colors.black,
+                fontSize: 25,
               ),
             ),
-            trailing: Icon(Icons.arrow_forward, color: Colors.white),
-            tileColor: Colors.blue,
-            onTap: () {},
-          ),
-
-          Divider(),
-
-          ListTile(
-            leading: Icon(Icons.settings, color: Colors.white),
-            title: Text(
-              "Configuración",
+            SizedBox(height: 2),
+            Text(
+              "chicharito14@gmail.com",
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+                color: Colors.grey,
+                fontSize: 15,
               ),
             ),
-            trailing: Icon(Icons.arrow_forward, color: Colors.white),
-            tileColor: Colors.blue,
-            onTap: () {},
-          ),
-
-          Divider(),
-
-          ListTile(
-            leading: Icon(Icons.logout, color: Colors.white),
-            title: Text(
-              "Algo xd pero cerrar sesion en config.",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+        
+            SizedBox(height: 20),
+        
+            // Opciones tipo perfil
+            ListTile(
+              leading: Icon(Icons.photo, color: Colors.white),
+              title: Text(
+                "Cambiar foto de perfil",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
               ),
+              trailing: Icon(Icons.arrow_forward, color: Colors.white),
+              tileColor: Colors.blue,
+              onTap: () {},
             ),
-            trailing: Icon(Icons.arrow_forward, color: Colors.white),
-            tileColor: Colors.blue,
-            onTap: () {},
-          ),
-        ],
+        
+            Divider(),
+        
+            ListTile(
+              leading: Icon(Icons.badge, color: Colors.white),
+              title: Text(
+                "Cambiar nombre",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+              trailing: Icon(Icons.arrow_forward, color: Colors.white),
+              tileColor: Colors.blue,
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
     );
   }

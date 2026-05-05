@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therafy_app/ui/screens/video1_screen.dart';
+import 'package:therafy_app/ui/screens/video2_screen.dart';
 
 class VideoScreen extends StatelessWidget {
   const VideoScreen({super.key});
@@ -26,8 +27,12 @@ class VideoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Cápsulas de video",
-              style: TextStyle(color: Colors.black, fontSize: 30),
+              "Contenidos Educativos",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 10),
 
@@ -89,7 +94,7 @@ class VideoScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Video1Screen(), //temporal
+                        builder: (context) => const Video2Screen(), //temporal
                       ),
                     );
                   },

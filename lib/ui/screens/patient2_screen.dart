@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:therafy_app/ui/screens/detail_patient_screen.dart';
 import 'package:therafy_app/ui/screens/video1_screen.dart';
-import 'package:therafy_app/ui/widgets/listviewwidget.dart';
 
 class Patient2Screen extends StatelessWidget {
   const Patient2Screen({super.key});
@@ -51,7 +51,7 @@ class Patient2Screen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Video1Screen(), //temporal
+                          builder: (context) => const DetailPatientScreen(), //temporal
                         ),
                       );
                     },
@@ -81,7 +81,7 @@ class Patient2Screen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Video1Screen(), //temporal
+                          builder: (context) => const DetailPatientScreen(), //temporal
                         ),
                       );
                     },
@@ -111,7 +111,7 @@ class Patient2Screen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Video1Screen(), //temporal cambiar despues
+                          builder: (context) => const DetailPatientScreen(), //temporal cambiar despues
                         ),
                       );
                     },
@@ -149,7 +149,7 @@ class Patient2Screen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Video1Screen(), //temporal
+                          builder: (context) => const DetailPatientScreen(), //temporal
                         ),
                       );
                     },
@@ -179,7 +179,7 @@ class Patient2Screen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Video1Screen(), //temporal cambiar despues
+                          builder: (context) => const DetailPatientScreen(), //temporal cambiar despues
                         ),
                       );
                     },
@@ -197,7 +197,7 @@ class Patient2Screen extends StatelessWidget {
             ),
 
           ],
-        ), //tunearlo para ponerle más cosas además de la lista
+        ),
       ),
     );
   }

@@ -26,26 +26,44 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Preferencias",
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.dark_mode_outlined),
-            title: Text("Modo Oscuro"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Modo Oscuro",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.text_fields),
-            title: Text("Tamaño de Texto"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Tamaño de Texto",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.notifications),
-            title: Text("Notificaciones"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Notificaciones",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           Divider(color: Colors.grey, indent: 15, endIndent: 15),
@@ -54,26 +72,44 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Cuenta",
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.email),
-            title: Text("Cambiar Correo"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Cambiar Correo",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.password),
-            title: Text("Cambiar Contraseña"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Cambiar Contraseña",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.logout),
-            title: Text("Cerrar Sesión"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            title: Text(
+              "Cerrar Sesión",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           Divider(color: Colors.grey, indent: 15, endIndent: 15),
@@ -82,14 +118,22 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Detalles",
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
             ),
           ),
 
           ListTile(
-            leading: Icon(Icons.warning),
-            title: Text("Reclamos"),
-            trailing: Icon(Icons.arrow_forward, size: 16),
+            leading: Icon(Icons.report),
+            title: Text(
+              "Reclamos",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            trailing: Icon(Icons.arrow_forward),
           ),
 
           Padding(

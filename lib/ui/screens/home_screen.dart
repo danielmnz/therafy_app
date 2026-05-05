@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:therafy_app/ui/screens/patient2_screen.dart';
-import 'package:therafy_app/ui/screens/patient_screen.dart';
 import 'package:therafy_app/ui/screens/profile_screen.dart';
 import 'package:therafy_app/ui/screens/assistance.dart';
 import 'package:therafy_app/ui/screens/videos_screen.dart';
@@ -10,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
       appBar: AppBar(
         title: Row(
           children: [
@@ -33,8 +33,6 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 76, 175, 80),
         toolbarHeight: 80, //tamaño de la barra
       ),
-
-      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
 
       body: Padding(
         padding: const EdgeInsets.all(16),
