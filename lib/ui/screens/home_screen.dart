@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/images/logo2.png',
+              'assets/images/logo_white.png',
               width: 70,
               height: 70,
               fit: BoxFit.cover,
@@ -25,12 +25,12 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 76, 175, 80),
         toolbarHeight: 80, //tamaño de la barra
       ),
 

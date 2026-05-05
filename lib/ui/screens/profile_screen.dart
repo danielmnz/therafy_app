@@ -52,48 +52,48 @@ class ProfileScreen extends StatelessWidget {
 
           // Opciones tipo perfil
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(Icons.person, color: Colors.white),
             title: Text(
               "Editar perfil",
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
               ),
             ),
-            trailing: Icon(Icons.arrow_forward),
-            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            trailing: Icon(Icons.arrow_forward, color: Colors.white),
+            tileColor: Colors.blue,
             onTap: () {},
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.settings, color: Colors.white),
             title: Text(
               "Configuración",
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
               ),
             ),
-            trailing: Icon(Icons.arrow_forward),
-            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            trailing: Icon(Icons.arrow_forward, color: Colors.white),
+            tileColor: Colors.blue,
             onTap: () {},
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.logout),
+            leading: Icon(Icons.logout, color: Colors.white),
             title: Text(
-              "Cerrar sesión",
+              "Algo xd pero cerrar sesion en config.",
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
               ),
             ),
-            trailing: Icon(Icons.arrow_forward),
-            tileColor: const Color.fromARGB(255, 165, 214, 255),
+            trailing: Icon(Icons.arrow_forward, color: Colors.white),
+            tileColor: Colors.blue,
             onTap: () {},
           ),
         ],
