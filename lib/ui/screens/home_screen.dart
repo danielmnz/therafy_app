@@ -40,10 +40,11 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hola @usuario !",
+              "Bienvenido @usuario !",
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 20,
                 color: Colors.black,
+                fontStyle: FontStyle.italic,
               ),
             ),
 
