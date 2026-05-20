@@ -10,7 +10,7 @@ El riesgo evaluado corresponde a verificar si Flutter permite la persistencia lo
 
 ---
 
-## Decisión (Librería/Estrategia adoptada)
+## Decisión (Librería adoptada)
 
 La librería utilizada para esta ocasión fue shared_preferences para almacenar configuraciones locales mediante pares key-value.
 
@@ -18,6 +18,7 @@ Versión utilizada:
 
 ```yaml
 shared_preferences: ^2.5.5
+```
 
 ---
 
