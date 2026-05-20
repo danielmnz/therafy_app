@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool modoOscuro = false;
+
+  @override
+  void initState() {
+    super.initState();
+    cargarConfig();
+  }
+
+  //cargar dato guardado
+  Future<void> cargarConfig() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      modoOscuro = prefs.getBool("modo oscuro") ?? false;
+    });
+    
+    print("valor booleano modo oscuro actual: $modoOscuro");
+  }
+
+  //guardar dato
+  Future<void> guardarConfig(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setBool("modo oscuro", value);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Cambios guardados correctamente")),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,43 +62,51 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Preferencias",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
+          /*
+          cambio temporal por el poc
           ListTile(
             leading: Icon(Icons.dark_mode_outlined),
+            title: Text("Modo Oscuro", style: TextStyle(fontSize: 16)),
+            trailing: Icon(Icons.arrow_forward),
+          ),*/
+
+          SwitchListTile(
+            secondary: Icon(Icons.dark_mode_outlined),
             title: Text(
               "Modo Oscuro",
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              style: TextStyle(fontSize: 16),
             ),
-            trailing: Icon(Icons.arrow_forward),
+            value: modoOscuro,
+            onChanged: (value) async {
+              setState(() {
+                modoOscuro = value;
+              });
+
+              await guardarConfig(value);
+            }
+          ),
+
+          Text(
+            "modo oscuro: $modoOscuro",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.black,
+            ),
           ),
 
           ListTile(
             leading: Icon(Icons.text_fields),
-            title: Text(
-              "Tamaño de Texto",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Tamaño de Texto", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.notifications),
-            title: Text(
-              "Notificaciones",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Notificaciones", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
@@ -72,43 +116,25 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Cuenta",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.email),
-            title: Text(
-              "Cambiar Correo",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cambiar Correo", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.password),
-            title: Text(
-              "Cambiar Contraseña",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cambiar Contraseña", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.logout),
-            title: Text(
-              "Cerrar Sesión",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cerrar Sesión", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
@@ -118,21 +144,13 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Detalles",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.report),
-            title: Text(
-              "Reclamos",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Reclamos", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
