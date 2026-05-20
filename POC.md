@@ -1,4 +1,4 @@
-# ADR - PoC Shared Preferences
+# Architecture Decision Record (ADR) - PoC shared_preferences
 
 ## Contexto (Riesgo evaluado)
 La aplicación requiere almacenar cambios simples en la configuración del usuario, cambios locales o de preferencia de la interfaz, como por ejemplo el modo oscuro, tamaño del texto y/o notificaciones, todo esto sin depender de conexión a internet o una base de datos externa para cumplir dicho requerimiento.
