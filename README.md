@@ -107,6 +107,8 @@ Este fue el framework principal que se usó para desarrollar la aplicación.
 
 # Diagramas DP2
 ### Diagrama Estructural
+
+```mermaid
 graph TB
 
 subgraph UI_Layer ["UI Layer"]
@@ -153,8 +155,10 @@ VM_Settings -.->|Guarda configuración| Serv_Storage
 VM_Session -.->|Actualiza| Mod_Session
 VM_Patient -.->|Gestiona datos| Mod_Patient
 VM_Assistance -.->|Actualiza| Mod_Assistance
+```
 
 ### Diagrama de Secuencia
+```mermaid
 sequenceDiagram
     actor Usuario
     participant UI as AssistanceScreen
@@ -174,8 +178,10 @@ sequenceDiagram
     else Error
         UI-->>Usuario: Error al guardar
     end
+```
 
 ### Diagrama de Estados
+```mermaid
 stateDiagram
     Inicio --> EsperandoConsulta : App iniciada
     EsperandoConsulta --> ConsultandoFirebase : Abre Pacientes
@@ -187,3 +193,4 @@ stateDiagram
     ErrorConexion --> EsperandoConsulta : Cancelar
 
     MostrandoPacientes --> EsperandoConsulta : Cerrar
+```
