@@ -102,3 +102,119 @@ Este proyecto se diferencia de las aplicaciones similares porque apoyaría a un 
 ### Tecnología usada
 #### Flutter
 Este fue el framework principal que se usó para desarrollar la aplicación.
+
+---
+
+# Diagramas DP2
+### Diagrama Estructural
+graph TB
+    classDef uiLayer fill:#003300,stroke:#00FF00,stroke-width:2px,stroke-dasharray: 5 5,color:#FFF;
+    classDef vmLayer fill:#001F3F,stroke:#0074D9,stroke-width:2px,stroke-dasharray: 5 5,color:#FFF;
+    classDef dataLayer fill:#221A00,stroke:#FF851B,stroke-width:2px,stroke-dasharray: 5 5,color:#FFF;
+    
+    classDef uiNode fill:#0A2F1D,stroke:#00FF00,stroke-width:1px,color:#FFF;
+    classDef vmNode fill:#051622,stroke:#0074D9,stroke-width:1px,color:#FFF;
+    classDef dataNode fill:#1A1105,stroke:#FF851B,stroke-width:1px,color:#FFF;
+
+    subgraph UI_Layer ["UI Layer"]
+        Widget_Nav["Widget:<br>NavigationScreenBottom"]
+        Pantalla_Settings["Pantalla:<br>SettingsScreen"]
+        Pantalla_Calendar["Pantalla:<br>CalendarScreen"]
+        Pantalla_Home["Pantalla:<br>HomeScreen"]
+        
+        Pantalla_Profile["Pantalla:<br>ProfileScreen"]
+        Pantalla_Video["Pantalla:<br>VideoScreen"]
+        Pantalla_Patient["Pantalla:<br>PatientScreen"]
+        Pantalla_Assistance["Pantalla:<br>AssistanceScreen"]
+        
+        Pantalla_Settings --> Widget_Nav
+        Pantalla_Calendar --> Widget_Nav
+        Pantalla_Home --> Widget_Nav
+        
+        Pantalla_Home --> Pantalla_Profile
+        Pantalla_Home --> Pantalla_Video
+        Pantalla_Home --> Pantalla_Patient
+        Pantalla_Home --> Pantalla_Assistance
+    end
+
+    subgraph ViewModels_Layer ["ViewModels"]
+        VM_Settings["SettingsViewModel"]
+        VM_Session["SessionViewModel"]
+        VM_Patient["PatientViewModel"]
+        VM_Assistance["AssistanceViewModel"]
+    end
+
+    subgraph Datos_Layer ["Datos e infraestructura"]
+        Serv_Storage["Servicio:<br>StorageService"]
+        Mod_Session["Modelo:<br>SessionModel"]
+        Mod_Patient["Modelo:<br>PatientModel"]
+        Mod_Assistance["Modelo:<br>AssistanceModel"]
+    end
+
+    Pantalla_Settings -.->|Actualiza| VM_Settings
+    Pantalla_Calendar -.->|Selecciona fecha| VM_Session
+    Pantalla_Patient -.->|Escucha| VM_Patient
+    Pantalla_Assistance -.->|Marca asistencia| VM_Assistance
+
+    VM_Settings -.->|Guarda configuración| Serv_Storage
+    VM_Session -.->|Actualiza| Mod_Session
+    VM_Patient -.->|Gestiona datos| Mod_Patient
+    VM_Assistance -.->|Actualiza| Mod_Assistance
+
+    class Widget_Nav,Pantalla_Settings,Pantalla_Calendar,Pantalla_Home,Pantalla_Profile,Pantalla_Video,Pantalla_Patient,Pantalla_Assistance uiNode;
+    class VM_Settings,VM_Session,VM_Patient,VM_Assistance vmNode;
+    class Serv_Storage,Mod_Session,Mod_Patient,Mod_Assistance dataNode;
+
+### Diagrama de Secuencia
+sequenceDiagram
+    actor Usuario
+    participant UI as Pantalla: AssistanceScreen
+    participant VM as AssistanceViewModel
+    participant M as Modelo: AssistanceModel
+
+    Usuario->>UI: Presiona "Marcar Asistencia"
+    
+    %% Llamada ViewModel
+    UI->>VM: markAttendance()
+    activate VM
+    
+    Note over VM: Captura día y hora actual<br/>(DateTime.now())
+    
+    %% Flecha de punta abierta hacia el Modelo
+    VM->>M: saveRecordAsync(dateTime)
+    activate M
+    
+    %% Flecha discontinua para el retorno del dato
+    M-->>VM: confirmación (Success)
+    deactivate M
+
+    alt Registro Exitoso
+        VM->>VM: updateHistoryList()
+        %% Notificación reactiva
+        VM-->>UI: notifyListeners()
+        UI-->>Usuario: Muestra historial actualizado
+    else Error en almacenamiento
+        VM-->>UI: notifyListeners()
+        UI-->>Usuario: Muestra mensaje de error
+    end
+    
+    deactivate VM
+
+### Diagrama de Estados
+stateDiagram-v2
+    [*] --> Inicio
+
+    Inicio --> EsperandoConsulta : App iniciada
+
+    EsperandoConsulta --> ConsultandoFirebase : Usuario abre Pacientes
+
+    ConsultandoFirebase --> MostrandoPacientes : Consulta exitosa
+    ConsultandoFirebase --> ErrorConexion : Conexión Fallida
+
+    ErrorConexion --> ConsultandoFirebase : Reintentar consulta
+    ErrorConexion --> EsperandoConsulta : Cancelar
+
+    MostrandoPacientes --> EsperandoConsulta : Cerrar lista
+
+    EsperandoConsulta --> [*] : Salir aplicación
+
