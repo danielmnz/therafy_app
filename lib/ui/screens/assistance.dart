@@ -47,7 +47,7 @@ class AssistanceScreen extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 padding:  EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                backgroundColor: Colors.blue,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -66,7 +66,7 @@ class AssistanceScreen extends StatelessWidget {
                 child: Text(
                   "Marcar Asistencia",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),

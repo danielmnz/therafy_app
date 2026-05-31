@@ -16,10 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Therafy App',
       theme: ThemeData(
+        useMaterial3: true, //diseño más reciente flutter
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 212, 59, 59),
-          primary: Colors.orange,
-          secondary: Colors.white,
+          seedColor: const Color.fromARGB(255, 37, 99, 235),
+          primary: const Color.fromARGB(255, 37, 99, 235),
+          secondary: const Color.fromARGB(255, 147, 197, 253),
         ),
       ),
       debugShowCheckedModeBanner: false, //quitar el debug de la esquina

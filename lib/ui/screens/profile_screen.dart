@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               trailing: Icon(Icons.arrow_forward, color: Colors.white),
-              tileColor: Colors.blue,
+              tileColor: Theme.of(context).colorScheme.primary,
               onTap: () {},
             ),
         
@@ -79,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               trailing: Icon(Icons.arrow_forward, color: Colors.white),
-              tileColor: Colors.blue,
+              tileColor: Theme.of(context).colorScheme.primary,
               onTap: () {},
             ),
           ],

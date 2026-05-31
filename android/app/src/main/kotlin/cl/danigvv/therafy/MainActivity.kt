@@ -1,4 +1,4 @@
-package com.example.therafy_app
+package cl.danigvv.therafy
 
 import io.flutter.embedding.android.FlutterActivity
 

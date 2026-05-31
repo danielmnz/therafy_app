@@ -9,14 +9,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
+      backgroundColor: Theme.of(context).colorScheme.secondary, //uso del themedata
       appBar: AppBar(
         title: Row(
           children: [
             Image.asset(
-              'assets/images/logo_white.png',
-              width: 70,
-              height: 70,
+              'assets/images/icono2_therafy_puro.png',
+              width: 50,
+              height: 50,
               fit: BoxFit.cover,
             ),
             SizedBox(width: 10),
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: const Color.fromARGB(255, 76, 175, 80),
+        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
         toolbarHeight: 80, //tamaño de la barra
       ),
 
