@@ -15,7 +15,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
+      backgroundColor: Theme.of(context).colorScheme.secondary, //uso del themedata
       appBar: AppBar(
         title: Text(
           'Calendario',
@@ -25,7 +25,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 76, 175, 80),
+        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
         toolbarHeight: 80, //tamaño de la barra
       ),
       body: Column(

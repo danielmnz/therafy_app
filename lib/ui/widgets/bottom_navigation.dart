@@ -32,7 +32,7 @@ class _NavigationScreenBottomState extends State<NavigationScreenBottom> {
         currentIndex: selectedIndex,
         selectedItemColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.black, //color cuando no se selecciona el item
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
         onTap: onItemTapped,
         items: const [
           BottomNavigationBarItem(

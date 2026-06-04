@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:therafy_app/models/settings_viewmodel.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final settings = context.watch<SettingsViewModel>();
+
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 179, 233, 181),
+      backgroundColor: Theme.of(context).colorScheme.secondary, //uso del themedata
       appBar: AppBar(
         title: Text(
           'Configuración',
@@ -16,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 76, 175, 80),
+        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
         toolbarHeight: 80, //tamaño de la barra
       ),
 
@@ -33,15 +39,18 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
-          ListTile(
-            leading: Icon(Icons.dark_mode_outlined),
-            title: Text(
-              "Modo Oscuro",
+          SwitchListTile(
+            secondary: const Icon(Icons.dark_mode_outlined),
+            title: const Text(
+              "Modo oscuro",
               style: TextStyle(
                 fontSize: 16,
-              ),
+              )
             ),
-            trailing: Icon(Icons.arrow_forward),
+            value: settings.darkMode,
+            onChanged: (value) {
+              context.read<SettingsViewModel>().toggleDarkMode(value);
+            },
           ),
 
           ListTile(
@@ -55,15 +64,13 @@ class SettingsScreen extends StatelessWidget {
             trailing: Icon(Icons.arrow_forward),
           ),
 
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text(
-              "Notificaciones",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-            trailing: Icon(Icons.arrow_forward),
+          SwitchListTile(
+            secondary: const Icon(Icons.notifications),
+            title: const Text("Notificaciones",),
+            value: settings.notifications,
+            onChanged: (value) {
+              context.read<SettingsViewModel>().toggleNotifications(value);
+            },
           ),
 
           Divider(color: Colors.grey, indent: 15, endIndent: 15),

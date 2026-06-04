@@ -1,30 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:therafy_app/ui/screens/home_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:therafy_app/core/services/storage_service.dart';
+import 'package:therafy_app/models/settings_viewmodel.dart';
 import 'package:therafy_app/ui/screens/splash_screen.dart';
-import 'package:therafy_app/ui/widgets/bottom_navigation.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  //lab6
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageService.init();
+
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => SettingsViewModel())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<SettingsViewModel>();
+
     return MaterialApp(
       title: 'Therafy App',
       theme: ThemeData(
-        useMaterial3: true, //diseño más reciente flutter
+        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 37, 99, 235),
           primary: const Color.fromARGB(255, 37, 99, 235),
           secondary: const Color.fromARGB(255, 147, 197, 253),
         ),
+        cardTheme: CardThemeData(
+          color: Colors.white,
+        ),
       ),
-      debugShowCheckedModeBanner: false, //quitar el debug de la esquina
-      //home: const NavigationScreenBottom(),
+      
+      debugShowCheckedModeBanner: false,
+
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 12, 36, 56),
+          primary: const Color.fromARGB(255, 12, 36, 56),
+          secondary: const Color.fromARGB(255, 28, 85, 131),
+        ),
+        cardTheme: CardThemeData(
+          color: Colors.black,
+          //falta que el color del texto se cambie tambien, porque cambia solo el fondo por ahora, investigar
+        ),
+      ),
+
+      themeMode: settings.themeMode,
+
       home: const SplashScreen(),
     );
   }
