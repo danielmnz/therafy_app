@@ -12,6 +12,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => SettingsViewModel())],
+      //almacena y gestiona la config de la app
       child: const MyApp(),
     ),
   );
@@ -52,6 +53,8 @@ class MyApp extends StatelessWidget {
           //falta que el color del texto se cambie tambien, porque cambia solo el fondo por ahora, investigar
         ),
       ),
+
+      //revisar el matherial theem builder del profe y tener eso de base mejor
 
       themeMode: settings.themeMode,
 
