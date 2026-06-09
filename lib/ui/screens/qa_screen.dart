@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:therafy_app/models/qa_viewmodel.dart';
+import 'package:share_plus/share_plus.dart';
 
 class QaScreen extends StatelessWidget {
   //FALTA DECORAR ESTA PANTALLA PA QUE SE VEA BIEN
@@ -57,6 +58,17 @@ class QaScreen extends StatelessWidget {
                             print("Respuesta: ${question.valor}"); //respuesta
                             print("====="); //para que no esté tan junto
                           }
+
+                          //PARA COMPARTIR LA INFO
+                          String mensaje = "Encuesta QA Therafy\n\n";
+
+                          for (var question in qaViewModel.questions) {
+                            mensaje += "${question.titulo}\n";
+                            mensaje +=
+                                "Respuesta: ${question.valor} estrellas\n\n";
+                          }
+
+                          SharePlus.instance.share(ShareParams(text: mensaje));
 
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
