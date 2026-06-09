@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:therafy_app/models/settings_viewmodel.dart';
+import 'package:therafy_app/ui/screens/qa_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final settings = context.watch<SettingsViewModel>();
 
-
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary, //uso del themedata
+      backgroundColor: Theme.of(
+        context,
+      ).colorScheme.secondary, //uso del themedata
       appBar: AppBar(
         title: Text(
           'Configuración',
@@ -22,7 +23,9 @@ class SettingsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
+        backgroundColor: Theme.of(
+          context,
+        ).colorScheme.primary, //uso del themedata
         toolbarHeight: 80, //tamaño de la barra
       ),
 
@@ -32,21 +35,13 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Preferencias",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
           SwitchListTile(
             secondary: const Icon(Icons.dark_mode_outlined),
-            title: const Text(
-              "Modo oscuro",
-              style: TextStyle(
-                fontSize: 16,
-              )
-            ),
+            title: const Text("Modo oscuro", style: TextStyle(fontSize: 16)),
             value: settings.darkMode,
             onChanged: (value) {
               context.read<SettingsViewModel>().toggleDarkMode(value);
@@ -55,18 +50,13 @@ class SettingsScreen extends StatelessWidget {
 
           ListTile(
             leading: Icon(Icons.text_fields),
-            title: Text(
-              "Tamaño de Texto",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Tamaño de Texto", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           SwitchListTile(
             secondary: const Icon(Icons.notifications),
-            title: const Text("Notificaciones",),
+            title: const Text("Notificaciones"),
             value: settings.notifications,
             onChanged: (value) {
               context.read<SettingsViewModel>().toggleNotifications(value);
@@ -79,43 +69,25 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Cuenta",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.email),
-            title: Text(
-              "Cambiar Correo",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cambiar Correo", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.password),
-            title: Text(
-              "Cambiar Contraseña",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cambiar Contraseña", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
           ListTile(
             leading: Icon(Icons.logout),
-            title: Text(
-              "Cerrar Sesión",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Cerrar Sesión", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
           ),
 
@@ -125,22 +97,29 @@ class SettingsScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               "Detalles",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
 
           ListTile(
             leading: Icon(Icons.report),
-            title: Text(
-              "Reclamos",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: Text("Reclamos", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.star),
+            title: const Text(
+              "Encuesta de Calidad",
+              style: TextStyle(fontSize: 16),
+            ),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const QaScreen()),
+              );
+            },
           ),
 
           Padding(

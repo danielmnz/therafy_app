@@ -3,40 +3,40 @@
         { 
             "titulo": "Pregunta 1: ¿Qué tan fácil fue navegar a través de la aplicación?", 
             "valor": 0, 
-            "min": "0 estrellas: Fue muy difícil encontrar las funcionalidades, la navegación fue confusa.", 
+            "min": "1 estrella: Fue muy difícil encontrar las funcionalidades, la navegación fue confusa.", 
             "max": "5 estrellas: Fue extremadamente fácil, la navegación es intuitiva y sin complicaciones." 
         }, 
         { 
-            "titulo": "Pregunta 2: ¿Pudiste completar tus tareas en la aplicación sin problemas?", 
+            "titulo": "Pregunta 2: ¿La organización de las secciones te pareció clara? (Perfil, Asistencia, Pacientes, Contenidos, Agenda)", 
             "valor": 0, 
-            "min": "0 estrellas: No pude completar las tareas, fue frustrante.", 
-            "max": "5 estrellas: Pude completar todas las tareas de forma rápida y eficiente." 
+            "min": "1 estrella: Las secciones están desordenadas y me costó entender para qué servía cada una.", 
+            "max": "5 estrellas: Las secciones están muy bien organizadas y son fáciles de identificar." 
         }, 
         { 
-            "titulo": "Pregunta 3: ¿Cómo calificas la interfaz gráfica en términos de diseño y claridad?", 
+            "titulo": "Pregunta 3: ¿Pudiste encontrar rápidamente la funcionalidad que buscabas?", 
             "valor": 0, 
-            "min": "0 estrellas: La interfaz es poco clara y difícil de entender.", 
-            "max": "5 estrellas: La interfaz es clara, atractiva y facilita el uso." 
+            "min": "1 estrella: Me tomó mucho tiempo encontrar las funciones que necesitaba.", 
+            "max": "5 estrellas: Encontré rápidamente todas las funciones que buscaba." 
         } 
     ], 
     "contenido": [ 
         { 
-            "titulo": "Pregunta 1: ¿El contenido de la aplicación fue útil para ti?", 
+            "titulo": "Pregunta 1: ¿Consideras que la aplicación aporta valor a tu trabajo o proceso terapéutico?", 
             "valor": 0, 
-            "min": "0 estrellas: El contenido no fue relevante ni útil.", 
-            "max": "5 estrellas: El contenido fue muy útil y relevante para mis necesidades." 
+            "min": "1 estrella: La aplicación no aporta valor a mis actividades o necesidades.", 
+            "max": "5 estrellas: La aplicación aporta mucho valor y facilita mi trabajo o proceso terapéutico." 
         }, 
         { 
             "titulo": "Pregunta 2: ¿Qué tan bien el contenido de la aplicación se adapta a tus expectativas?", 
             "valor": 0, 
-            "min": "0 estrellas: El contenido no cumplió con mis expectativas.", 
-            "max": "5 estrellas: El contenido superó completamente mis expectativas." 
+            "min": "1 estrella: El contenido no cumplió mis expectativas.", 
+            "max": "5 estrellas: El contenido cumplió completamente o superó mis expectativas." 
         }, 
         { 
-            "titulo": "Pregunta 3: ¿El contenido de la aplicación está presentado de manera clara y comprensible?", 
+            "titulo": "Pregunta 3: ¿Los contenidos educativos te parecieron útiles?", 
             "valor": 0, 
-            "min": "0 estrellas: El contenido está mal estructurado o es confuso.", 
-            "max": "5 estrellas: El contenido está muy bien presentado y es fácil de comprender." 
+            "min": "1 estrella: Los contenidos educativos no fueron útiles para mí.", 
+            "max": "5 estrellas: Los contenidos educativos fueron muy útiles y relevantes." 
         } 
     ], 
     "compartir": [ 
@@ -45,20 +45,20 @@
  
             "titulo": "Pregunta 1: ¿Qué tan probable es que recomiendes esta aplicación a un amigo?", 
             "valor": 0, 
-            "min": "0 estrellas: No la recomendaría en absoluto.", 
+            "min": "1 estrella: No la recomendaría en absoluto.", 
             "max": "5 estrellas: Definitivamente la recomendaría." 
         }, 
         { 
-            "titulo": "Pregunta 2: ¿Cómo te sentirías al compartir esta aplicación con alguien más?", 
+            "titulo": "Pregunta 2: ¿Crees que esta aplicación podría reemplazar tu método de trabajo actual para atender pacientes?", 
             "valor": 0, 
-            "min": "0 estrellas: No me sentiría cómodo compartiéndola.", 
-            "max": "5 estrellas: Me sentiría muy cómodo compartiéndola." 
+            "min": "1 estrella: No podría reemplazar mi método de trabajo actual.", 
+            "max": "5 estrellas: Podría reemplazar gran parte de mi método de trabajo actual." 
         }, 
         { 
-            "titulo": "Pregunta 3: ¿Crees que esta aplicación podría ser útil para personas cercanas a ti?", 
+            "titulo": "Pregunta 3: ¿Crees que esta aplicación podría ser útil para personas del área de la salud?", 
             "valor": 0, 
-            "min": "0 estrellas: No creo que sea útil para otras personas.", 
-            "max": "5 estrellas: Estoy seguro de que sería muy útil para personas cercanas." 
+            "min": "1 estrella: No considero que sea útil para profesionales de la salud.", 
+            "max": "5 estrellas: Considero que sería muy útil para profesionales de la salud." 
         } 
     ] 
 } 

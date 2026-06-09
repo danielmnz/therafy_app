@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:therafy_app/core/services/storage_service.dart';
+import 'package:therafy_app/models/qa_viewmodel.dart';
 import 'package:therafy_app/models/settings_viewmodel.dart';
 import 'package:therafy_app/ui/screens/splash_screen.dart';
 
@@ -11,7 +12,10 @@ void main() async {
 
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => SettingsViewModel())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => SettingsViewModel()),
+        ChangeNotifierProvider(create: (_)=> QaViewModel()),
+      ],
       //almacena y gestiona la config de la app
       child: const MyApp(),
     ),
