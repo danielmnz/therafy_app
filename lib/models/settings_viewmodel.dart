@@ -10,6 +10,9 @@ class SettingsViewModel extends ChangeNotifier {
 
   ThemeMode get themeMode => _darkMode ? ThemeMode.dark : ThemeMode.light; //pal modo oscuro real
 
+  //para cambiar tamaño de texto
+  double textScale = 1.0; //normal
+
   SettingsViewModel() {
     _loadSettings();
   }
@@ -29,6 +32,12 @@ class SettingsViewModel extends ChangeNotifier {
     _notifications = value; //si es true o false
     StorageService.saveNotifications(value);
     notifyListeners();
+  }
+
+  void setTextScale(double value) {
+  textScale = value;
+  print("Nuevo tamaño: $textScale");
+  notifyListeners();
   }
 
   void refreshSettings() {

@@ -30,8 +30,8 @@ class _NavigationScreenBottomState extends State<NavigationScreenBottom> {
       body: pantallas[selectedIndex], //cambia pantalla
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
-        unselectedItemColor: Colors.black, //color cuando no se selecciona el item
+        selectedItemColor: Colors.yellow,
+        unselectedItemColor: Colors.white, //color cuando no se selecciona el item
         backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
         onTap: onItemTapped,
         items: const [

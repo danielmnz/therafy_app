@@ -51,7 +51,24 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.text_fields),
             title: Text("Tamaño de Texto", style: TextStyle(fontSize: 16)),
-            trailing: Icon(Icons.arrow_forward),
+            trailing: DropdownButton(
+              value: settings.textScale,
+              //isExpanded: true,
+              items: [
+                DropdownMenuItem(value: 0.8, child: Text("Pequeño")),
+
+                DropdownMenuItem(value: 1.0, child: Text("Mediano")),
+
+                DropdownMenuItem(value: 1.5, child: Text("Grande")),
+
+                DropdownMenuItem(value: 2.0, child: Text("Muy Grande")),
+              ],
+              onChanged: (value) {
+                if (value != null) {
+                  settings.setTextScale(value);
+                }
+              },
+            ),
           ),
 
           SwitchListTile(
