@@ -7,13 +7,11 @@ class StorageService {
     _prefs = await SharedPreferences.getInstance();
   }
 
-
   //modo oscuro
   static Future<void> saveDarkMode(bool value) async =>
       _prefs.setBool('dark_mode', value);
 
-  static bool getDarkMode() =>
-      _prefs.getBool('dark_mode') ?? false;
+  static bool getDarkMode() => _prefs.getBool('dark_mode') ?? false;
 
   //notificaciones
   static Future<void> saveNotifications(bool value) async =>
@@ -21,4 +19,10 @@ class StorageService {
 
   static bool getNotifications() =>
       _prefs.getBool('notifications_enabled') ?? true;
+
+  //guardar info pacientes*
+  static Future<void> saveString(String key, String value) async =>
+      _prefs.setString(key, value);
+
+  static String? getString(String key) => _prefs.getString(key);
 }

@@ -1,0 +1,1 @@
+//opcion 2 guardar con shared prefernces olocalmente en el celu

@@ -143,7 +143,7 @@ class SettingsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Center(
               child: Text(
-                "Versión 0.0.1",
+                "Versión 0.0.3",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
