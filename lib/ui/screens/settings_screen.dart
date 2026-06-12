@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:therafy_app/core/services/notification_service.dart';
 import 'package:therafy_app/models/settings_viewmodel.dart';
 import 'package:therafy_app/ui/screens/qa_screen.dart';
 
@@ -56,11 +57,8 @@ class SettingsScreen extends StatelessWidget {
               //isExpanded: true,
               items: [
                 DropdownMenuItem(value: 0.8, child: Text("Pequeño")),
-
                 DropdownMenuItem(value: 1.0, child: Text("Mediano")),
-
                 DropdownMenuItem(value: 1.5, child: Text("Grande")),
-
                 DropdownMenuItem(value: 2.0, child: Text("Muy Grande")),
               ],
               onChanged: (value) {
@@ -77,6 +75,10 @@ class SettingsScreen extends StatelessWidget {
             value: settings.notifications,
             onChanged: (value) {
               context.read<SettingsViewModel>().toggleNotifications(value);
+              NotificationService.showNotification(
+                "PRUEBA DE NOFITICACIÓN", //title
+                "cuerpo de la notificación, funciona :)", //body
+              );
             },
           ),
 
@@ -143,7 +145,7 @@ class SettingsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Center(
               child: Text(
-                "Versión 0.0.3",
+                "Versión 0.0.4",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,

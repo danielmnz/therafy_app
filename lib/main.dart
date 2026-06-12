@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:therafy_app/core/services/notification_service.dart';
 import 'package:therafy_app/core/services/storage_service.dart';
 import 'package:therafy_app/models/qa_viewmodel.dart';
 import 'package:therafy_app/models/settings_viewmodel.dart';
@@ -9,6 +10,8 @@ void main() async {
   //lab6
   WidgetsFlutterBinding.ensureInitialized();
   await StorageService.init();
+
+  await NotificationService.init(); //para las notificacinoes
 
   runApp(
     MultiProvider(

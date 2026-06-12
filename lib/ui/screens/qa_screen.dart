@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:therafy_app/models/qa_viewmodel.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart'; //para compartir por correo
 
 class QaScreen extends StatelessWidget {
-  //FALTA DECORAR ESTA PANTALLA PA QUE SE VEA BIEN
-  //solo muestra preguntas pero no hace nada
   const QaScreen({super.key});
+
+  //metodo enviarcorreo
+  Future<void> enviarCorreo(String mensaje) async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: 'ntd.danii@gmail.com',
+      queryParameters: {'subject': 'Resultados Encuesta QA App Therafy', 'body': mensaje},
+    );
+
+    await launchUrl(emailUri);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +40,7 @@ class QaScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "QA",
+              "Encuesta QA",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 30,
@@ -46,45 +56,72 @@ class QaScreen extends StatelessWidget {
                   if (index == qaViewModel.questions.length) {
                     return Padding(
                       padding: const EdgeInsets.all(16),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          //if 0 faltan responder
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              //if 0 faltan responder
 
-                          //debug
-                          print("RESPUESTAS ENCUESTA");
+                              //debug
+                              print("RESPUESTAS ENCUESTA");
 
-                          for (var question in qaViewModel.questions) {
-                            print("${question.titulo}"); //pregunta
-                            print("Respuesta: ${question.valor}"); //respuesta
-                            print("====="); //para que no esté tan junto
-                          }
+                              for (var question in qaViewModel.questions) {
+                                print("${question.titulo}"); //pregunta
+                                print(
+                                  "Respuesta: ${question.valor}",
+                                ); //respuesta
+                                print("====="); //para que no esté tan junto
+                              }
 
-                          //PARA COMPARTIR LA INFO
-                          String mensaje = "Encuesta QA Therafy\n\n";
+                              //PARA COMPARTIR LA INFO
+                              String mensaje = "Encuesta QA Therafy\n\n";
 
-                          for (var question in qaViewModel.questions) {
-                            mensaje += "${question.titulo}\n";
-                            mensaje +=
-                                "Respuesta: ${question.valor} estrellas\n\n";
-                          }
+                              for (var question in qaViewModel.questions) {
+                                mensaje += "${question.titulo}\n";
+                                mensaje +=
+                                    "Respuesta: ${question.valor} estrellas\n\n";
+                              }
 
-                          SharePlus.instance.share(ShareParams(text: mensaje));
+                              SharePlus.instance.share(
+                                ShareParams(text: mensaje),
+                              );
 
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Center(
-                                child: Text(
-                                  "Se enviaron las respuestas correctamente",
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 16,
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Center(
+                                    child: Text(
+                                      "Se enviaron las respuestas correctamente",
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 16,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          );
-                        },
-                        child: const Text("Enviar Respuestas"),
+                              );
+                            },
+
+                            child: const Text("Enviar Respuestas"),
+                          ),
+
+                          const SizedBox(height: 10),
+                          
+                          //compartir opr correo
+                          ElevatedButton(
+                            onPressed: () {
+                              String mensaje = "Encuesta QA Therafy\n\n";
+
+                              for (var question in qaViewModel.questions) {
+                                mensaje += "${question.titulo}\n";
+                                mensaje +=
+                                    "Respuesta: ${question.valor} estrellas\n\n";
+                              }
+
+                              enviarCorreo(mensaje); //llamamos el método
+                            },
+                            child: const Text("Enviar por correo"),
+                          ),
+                        ],
                       ),
                     );
                   }
