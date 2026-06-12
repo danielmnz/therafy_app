@@ -60,6 +60,7 @@ class ProfileScreen extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
+                  //PASARLO AL MAIN
                 ),
               ),
               trailing: Icon(Icons.arrow_forward, color: Colors.white),
