@@ -4,6 +4,7 @@ import 'package:therafy_app/core/services/storage_service.dart';
 import 'package:therafy_app/models/event_model.dart';
 import 'package:intl/intl.dart'; //para formato del dia
 import 'dart:convert'; //para guardar info (json)
+import 'package:therafy_app/models/patient_model.dart'; //para pasar ultima sesion
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -18,11 +19,29 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   EventModel? editingEvent; //guardar eventos
 
-  final TextEditingController patientController = TextEditingController();
+  String? selectedPatient; //pacientes
+
+  //final TextEditingController patientController = TextEditingController();
   final TextEditingController hourController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
   final Map<DateTime, List<EventModel>> events = <DateTime, List<EventModel>>{};
+
+  //lista de pacientes
+  List<String> patientNames = [];
+
+  //cargar pacientes
+  Future<void> loadPatients() async {
+    final jsonString = StorageService.getString('patients');
+
+    if (jsonString == null) return;
+
+    final List<dynamic> jsonList = jsonDecode(jsonString);
+
+    patientNames = jsonList.map((e) => e['name'].toString()).toList();
+
+    setState(() {});
+  }
 
   List<EventModel> getEventsForDay(DateTime day) {
     return events.entries
@@ -74,7 +93,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
       isScrollControlled: true,
       builder: (context) {
         return Padding(
-          padding: EdgeInsets.only( //only para usar el bottom y el teclado se ponga encima
+          padding: EdgeInsets.only(
+            //only para usar el bottom y el teclado se ponga encima
             left: 20,
             right: 20,
             top: 20,
@@ -98,16 +118,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
               const SizedBox(height: 20),
 
-              TextField(
-                controller: patientController,
+              //desplegar pacientes de la lista
+              DropdownButtonFormField<String>(
+                value: selectedPatient,
                 decoration: const InputDecoration(
-                  labelText: "Nombre Paciente",
-                  labelStyle: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 16,
-                  ),
+                  labelText: "Paciente",
                   border: OutlineInputBorder(),
                 ),
+                items: patientNames.map((name) {
+                  return DropdownMenuItem(value: name, child: Text(name));
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedPatient = value;
+                  });
+                },
               ),
 
               const SizedBox(height: 15),
@@ -129,7 +154,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
-                  labelText: "Descripción / Motivo de la consulta",
+                  labelText: "Descripción / Motivo consulta",
                   labelStyle: TextStyle(
                     fontStyle: FontStyle.italic,
                     fontSize: 16,
@@ -144,7 +169,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 onPressed: () {
                   setState(() {
                     if (editingEvent != null) {
-                      editingEvent!.patient = patientController.text;
+                      //editingEvent!.patient = patientController.text;
+                      editingEvent!.patient =
+                          selectedPatient ?? editingEvent!.patient;
                       editingEvent!.hour = hourController.text;
                       editingEvent!.description = descriptionController.text;
                     } else {
@@ -154,18 +181,26 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
                       events[selectedDate]!.add(
                         EventModel(
-                          patient: patientController.text,
+                          patient: selectedPatient ?? "Sin paciente",
                           hour: hourController.text,
                           description: descriptionController.text,
                         ),
                       );
+
+                      if (selectedPatient != null) {
+                        updatePatientLastSession(
+                          selectedPatient!,
+                          selectedDate,
+                        );
+                      }
                     }
                   });
 
                   //guardar eventos (info) LOCAL
                   saveEvents();
 
-                  patientController.clear();
+                  //patientController.clear();
+                  selectedPatient = null;
                   hourController.clear();
                   descriptionController.clear();
 
@@ -182,11 +217,33 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  //metodo para ver la ultima sesion de paciente
+  Future<void> updatePatientLastSession(
+    String patientName,
+    DateTime sessionDate,
+  ) async {
+    final jsonString = StorageService.getString('patients');
+
+    if (jsonString == null) return;
+
+    final List<dynamic> jsonList = jsonDecode(jsonString);
+    final patients = jsonList.map((e) => PatientModel.fromJson(e)).toList();
+    final patient = patients.firstWhere((p) => p.name == patientName);
+
+    patient.lastSession = DateFormat('dd/MM/yyyy').format(sessionDate);
+
+    await StorageService.saveString(
+      'patients',
+      jsonEncode(patients.map((p) => p.toJson()).toList()),
+    );
+  }
+
   //inicializar estado de la info guardada
   @override
   void initState() {
     super.initState();
     loadEvents();
+    loadPatients(); //cargar pacientes
   }
 
   @override
@@ -288,7 +345,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       onPressed: () {
                         editingEvent = event;
 
-                        patientController.text = event.patient;
+                        //patientController.text = event.patient;
+                        selectedPatient = event.patient;
                         hourController.text = event.hour;
                         descriptionController.text = event.description;
 
@@ -304,17 +362,29 @@ class _CalendarScreenState extends State<CalendarScreen> {
           //
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          editingEvent = null;
+      floatingActionButton: SizedBox(
+        width: 200,
+        height: 75,
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            editingEvent = null;
 
-          patientController.clear();
-          hourController.clear();
-          descriptionController.clear();
+            //patientController.clear();
+            selectedPatient = null;
+            hourController.clear();
+            descriptionController.clear();
 
-          metodoEditarPaciente();
-        },
-        child: Icon(Icons.add),
+            metodoEditarPaciente();
+          },
+          icon: const Icon(Icons.event_available, size: 30),
+          label: const Text(
+            "Agregar Sesión",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Colors.white,
+          elevation: 8,
+        ),
       ),
     );
   }
