@@ -25,4 +25,9 @@ class StorageService {
       _prefs.setString(key, value);
 
   static String? getString(String key) => _prefs.getString(key);
+
+  //borrar datos
+  static Future<void> remove(String key) async => _prefs.remove(key);
+
+  static Future<void> clearAll() async => _prefs.clear();
 }

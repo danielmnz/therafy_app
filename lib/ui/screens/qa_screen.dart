@@ -58,6 +58,7 @@ class QaScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
+                          /*
                           ElevatedButton(
                             onPressed: () {
                               //if 0 faltan responder
@@ -102,7 +103,7 @@ class QaScreen extends StatelessWidget {
                             },
 
                             child: const Text("Enviar Respuestas"),
-                          ),
+                          ),*/
 
                           const SizedBox(height: 10),
                           
@@ -119,7 +120,12 @@ class QaScreen extends StatelessWidget {
 
                               enviarCorreo(mensaje); //llamamos el método
                             },
-                            child: const Text("Enviar por correo"),
+                            child: const Text(
+                              "ENVIAR POR CORREO",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:therafy_app/core/services/notification_service.dart';
 import 'package:therafy_app/models/settings_viewmodel.dart';
 import 'package:therafy_app/ui/screens/qa_screen.dart';
+import 'package:therafy_app/core/services/storage_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -92,22 +93,56 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
+          //borrar datos
           ListTile(
-            leading: Icon(Icons.email),
-            title: Text("Cambiar Correo", style: TextStyle(fontSize: 16)),
-            trailing: Icon(Icons.arrow_forward),
-          ),
+            leading: const Icon(Icons.delete_forever, color: Colors.red),
+            title: const Text(
+              "Restablecer datos",
+              style: TextStyle(fontSize: 16),
+            ),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () async {
+              final confirm = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text("Restablecer datos"),
+                  content: const Text(
+                    "Se eliminarán todos los pacientes, sesiones y datos del perfil\n¿Deseas continuar?",
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: const Text("Cancelar"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      child: const Text(
+                        "Eliminar",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )
+                      ),
+                    ),
+                  ],
+                ),
+              );
 
-          ListTile(
-            leading: Icon(Icons.password),
-            title: Text("Cambiar Contraseña", style: TextStyle(fontSize: 16)),
-            trailing: Icon(Icons.arrow_forward),
-          ),
+              if (confirm == true) {
+                await StorageService.remove('patients');
+                await StorageService.remove('calendar_events');
 
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text("Cerrar Sesión", style: TextStyle(fontSize: 16)),
-            trailing: Icon(Icons.arrow_forward),
+                await StorageService.remove('profile_name');
+                await StorageService.remove('profile_email');
+                await StorageService.remove('profile_image');
+                await StorageService.remove('profile_role');
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Datos eliminados correctamente"),
+                  ),
+                );
+              }
+            },
           ),
 
           Divider(color: Colors.grey, indent: 15, endIndent: 15),
@@ -120,11 +155,12 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
+          /*
           ListTile(
             leading: Icon(Icons.report),
             title: Text("Reclamos", style: TextStyle(fontSize: 16)),
             trailing: Icon(Icons.arrow_forward),
-          ),
+          ),*/
 
           ListTile(
             leading: const Icon(Icons.star),
@@ -145,7 +181,7 @@ class SettingsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Center(
               child: Text(
-                "Versión 0.0.4",
+                "Versión 0.0.8",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,

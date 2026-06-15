@@ -3,13 +3,38 @@ import 'package:therafy_app/ui/screens/patient2_screen.dart';
 import 'package:therafy_app/ui/screens/profile_screen.dart';
 import 'package:therafy_app/ui/screens/assistance.dart';
 import 'package:therafy_app/ui/screens/videos_screen.dart';
+import 'package:therafy_app/core/services/storage_service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String profileName = "Usuario";
+
+  //metodo para cargar el nombre
+  void loadProfileName() {
+    setState(() {
+      profileName = StorageService.getString('profile_name') ?? "Usuario";
+    });
+  }
+
+  //cargar nombre
+  @override
+  void initState() {
+    super.initState();
+    loadProfileName();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary, //uso del themedata
+      backgroundColor: Theme.of(
+        context,
+      ).colorScheme.secondary, //uso del themedata
       appBar: AppBar(
         title: Row(
           children: [
@@ -30,7 +55,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary, //uso del themedata
+        backgroundColor: Theme.of(
+          context,
+        ).colorScheme.primary, //uso del themedata
         toolbarHeight: 80, //tamaño de la barra
       ),
 
@@ -40,7 +67,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Bienvenido @usuario !",
+              "Hola $profileName! :)",
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.black,
@@ -58,15 +85,17 @@ class HomeScreen extends StatelessWidget {
                     elevation: 6,
                     clipBehavior: Clip.hardEdge,
                     child: InkWell(
-                      onTap: () {
-                        Navigator.push(
+                      onTap: () async {
+                        await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProfileScreen(), //temporal
+                            builder: (context) => const ProfileScreen(),
                           ),
                         );
+
+                        loadProfileName();
                       },
-                  
+
                       //poner una foto cambiante de perfil, que ponga la del usuario personal y una por defecto
                       child: Column(
                         children: [
@@ -85,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
                               ),
-                            )
+                            ),
                           ),
                           SizedBox(height: 10),
                         ],
@@ -94,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                  const SizedBox(width: 10),
+                const SizedBox(width: 10),
 
                 Expanded(
                   child: Card(
@@ -105,11 +134,12 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const AssistanceScreen(), //temporal
+                            builder: (context) =>
+                                const AssistanceScreen(), //temporal
                           ),
                         );
                       },
-                  
+
                       child: Column(
                         children: [
                           Image.asset(
@@ -127,7 +157,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
                               ),
-                            )
+                            ),
                           ),
                           SizedBox(height: 10),
                         ],
@@ -152,11 +182,12 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const VideoScreen(), //temporal
+                            builder: (context) =>
+                                const VideoScreen(), //temporal
                           ),
                         );
                       },
-                  
+
                       child: Column(
                         children: [
                           Image.asset(
@@ -174,7 +205,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
                               ),
-                            )
+                            ),
                           ),
                           SizedBox(height: 10),
                         ],
@@ -194,11 +225,12 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Patient2Screen(), //temporal
+                            builder: (context) =>
+                                const Patient2Screen(), //temporal
                           ),
                         );
                       },
-                  
+
                       child: Column(
                         children: [
                           Image.asset(
@@ -216,7 +248,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
                               ),
-                            )
+                            ),
                           ),
                           SizedBox(height: 10),
                         ],
