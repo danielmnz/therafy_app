@@ -122,4 +122,4 @@ Este fue el framework principal que se usó para desarrollar la aplicación.
 
 ## Instalación
 Mediante el siguiente código QR se puede instalar la aplicación, te dirigirá a un archivo almacenado de Google Drive que es la APK del proyecto, se debe instalar, sin asustarse con las advertencias de seguridad porque eso se debe a que es una aplicación "externa" de Google Play/Apple Store. Una vez instalada, se puede utilizar con normalidad.
-![QR de la "apk"](assets/readme/home_screen.png)
+![QR de la "apk"](assets/images/qr_instalacion_app.png)
